@@ -1,6 +1,5 @@
 package pl.wsb.fitnesstracker.training.api;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package pl.wsb.fitnesstracker.userEvent;
+package pl.wsb.fitnesstracker.userevent;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -28,4 +28,10 @@ public class UserEvent {
 
     @Column(nullable = false)
     private LocalDateTime registrationDate;
+
+    public UserEvent(User user, Event event, LocalDateTime registrationDate) {
+        this.user = user;
+        this.event = event;
+        this.registrationDate = registrationDate;
+    }
 }

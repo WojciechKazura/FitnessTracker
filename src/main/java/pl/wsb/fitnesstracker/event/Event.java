@@ -4,15 +4,16 @@ import jakarta.persistence.*;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
 
-// TODO: Define the Event entity with appropriate fields and annotations
 @Entity
 @Table(name = "event")
 @NoArgsConstructor
 @Getter
+@ToString
 public class Event {
 
 
