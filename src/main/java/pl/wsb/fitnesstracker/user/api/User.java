@@ -29,7 +29,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Training> trainings;
-///////////
+    //////////
     @Column(name = "firstname", nullable = false)
     private String firstName;
 
