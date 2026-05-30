@@ -23,6 +23,7 @@ interface UserRepository extends JpaRepository<User, Long> {
                 .findFirst();
     }
 
+
     @Query(
             value = "SELECT * FROM users WHERE email LIKE CONCAT('%', :domain)",
             nativeQuery = true

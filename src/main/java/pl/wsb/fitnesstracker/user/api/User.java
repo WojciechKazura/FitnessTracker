@@ -2,16 +2,17 @@ package pl.wsb.fitnesstracker.user.api;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import pl.wsb.fitnesstracker.training.api.Training;
+import pl.wsb.fitnesstracker.userevent.UserEvent;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(exclude = {"trainings", "healthMatrics", "statistics"})
 public class User {
@@ -21,6 +22,14 @@ public class User {
     @Nullable
     private Long id;
 
+    /////////
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<UserEvent> userEvents;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Training> trainings;
+///////////
     @Column(name = "firstname", nullable = false)
     private String firstName;
 

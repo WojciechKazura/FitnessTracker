@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import pl.wsb.fitnesstracker.training.internal.ActivityType;
 import pl.wsb.fitnesstracker.user.api.User;
+import pl.wsb.fitnesstracker.workoutsession.WorkoutSession;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Trainings")
@@ -21,6 +23,11 @@ public class Training {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    //////////
+    @OneToMany(mappedBy = "training", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<WorkoutSession> workoutSessions;
+    //////////
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

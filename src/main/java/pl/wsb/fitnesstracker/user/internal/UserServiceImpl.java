@@ -17,15 +17,21 @@ class UserServiceImpl implements UserService, UserProvider {
 
     private final UserRepository userRepository;
 
-    @Override
+   /* @Override
     public User createUser(final User user) {
         log.info("Creating User {}", user);
         if (user.getId() != null) {
             throw new IllegalArgumentException("User has already DB ID, update is not permitted!");
         }
         return userRepository.save(user);
+    }*/
+////////////////////////
+    @Override
+    public User createUser(final User user) {
+        log.info("Saving User {}", user);
+        return userRepository.save(user);
     }
-
+/////////////////////////
     @Override
     public Optional<User> getUser(final Long userId) {
         return userRepository.findById(userId);
@@ -39,6 +45,11 @@ class UserServiceImpl implements UserService, UserProvider {
     @Override
     public List<User> findAllUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public void deleteUser(Long userId) {
+        userRepository.deleteById(userId);
     }
 
 }
